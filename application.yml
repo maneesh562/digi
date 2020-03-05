@@ -1,27 +1,38 @@
 server:
-  port: 8888
+  port: 2018
 
 spring:
   application:
-    name: config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/maneesh562/digi
- #         username: ${github.username}
-          username: maneesh562
- #         password: ${github.password}
-          password: 'Maneesh@0000'
+    name: plant-asset-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27099
+      database: test2
+#spring.data.mongodb.username=
+#spring.data.mongodb.password=
 
 eureka:
   client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
   instance:
-    leaseRenewalIntervalInSeconds: 1
-    leaseExpirationDurationInSeconds: 2
-    
+    hostname: localhost
+
+# ============================
+ # Sl4j
+# ============================
 logging:
   level:
-    org.springframework.cloud.config: DEBUG
+    com:
+      example:
+        app: DEBUG
+    root: WARN
+    org:
+      springframework: WARN
+  file: d:/logs/myapps.log
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} %L - %msg%n'
