@@ -1,0 +1,27 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/maneesh562/digi
+ #         username: ${github.username}
+          username: maneesh562
+ #         password: ${github.password}
+          password: 'Maneesh@0000'
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    
+logging:
+  level:
+    org.springframework.cloud.config: DEBUG
