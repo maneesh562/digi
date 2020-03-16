@@ -11,8 +11,8 @@ spring:
   data:
     mongodb:
       host: localhost
-      port: 27017
-      database: test
+      port: 27099
+      database: test2
 
 eureka:
   client:
