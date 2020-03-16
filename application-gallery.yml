@@ -1,1 +1,34 @@
+server:
+  port: 8100
+security:
+  jwt:
+    token:
+      secret-key: secret-key
 
+spring:
+  application:
+    name: gallery-service
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance-id: ${spring.application.name}:${random.value}
+
+# Sl4j
+logging:
+  level:
+    org.springframework: OFF
+    hibernate: ERROR
+    com.example.*: DEBUG
+  file: d:/logs/myapps.log
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} %L - %msg%n'
